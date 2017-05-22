@@ -85,7 +85,6 @@ class TableViewController: UITableViewController {
     }
     
     func search(latitude: String, longitude: String){ // This is how we handle a new location being entered
-        legislators = [Legislator]() // clear out old results
         guard let encLat = latitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let encLong = longitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return()
         }
@@ -97,6 +96,7 @@ class TableViewController: UITableViewController {
             }
             else if let data = data {
                 if let json = try! JSONSerialization.jsonObject(with: data) as? [String: AnyObject] {
+                    var newLegislators = [Legislator]()
                     for result in json["results"] as! [[String: AnyObject]]{
                         let title = result["title"] as! String
                         let firstName = result["first_name"] as! String
@@ -106,10 +106,11 @@ class TableViewController: UITableViewController {
                         let website = URL(string: site) ?? URL(string: "https://www.whitehouse.gov")!
                         let name = "\(title). \(firstName) \(lastName)"
                         let legislator = Legislator(name, twitter: twitter, website: website)
-                        self.legislators.append(legislator)
+                        newLegislators.append(legislator)
                     }
-                    if(self.legislators.count > 0){
+                    if(newLegislators.count > 0){
                         DispatchQueue.main.async {
+                            self.legislators = newLegislators // this way we can wipe the old results only once we've got the new ones
                             self.tableView.reloadData()
                         }
                     }
