@@ -60,6 +60,26 @@ class TableViewController: UITableViewController {
         
         return cell
     }
+    
+    func search(latitude: String, longitude: String){
+        guard let encLat = latitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let encLong = longitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            return()
+        }
+        let url = URL(string: "http://congress.api.sunlightfoundation.com/legislators/locate?latitude=\(encLat)&longitude=\(encLong)")
+        URLSession.shared.dataTask(with: url!) {
+            (data, response, err) in
+            if let err = err {
+                print("err: \(err)")
+            }
+            else if let data = data {
+                if let json = try! JSONSerialization.jsonObject(with: data) as? [String: AnyObject] {
+                    for result in json["items"] as! [[String: AnyObject]]{
+                        
+                    }
+                }
+            }
+        }.resume()
+    }
  
 
     /*
