@@ -62,6 +62,7 @@ class TableViewController: UITableViewController {
     }
     
     func search(latitude: String, longitude: String){
+        legislators = [Legislator]() // clear out old results
         guard let encLat = latitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let encLong = longitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return()
         }
@@ -73,8 +74,16 @@ class TableViewController: UITableViewController {
             }
             else if let data = data {
                 if let json = try! JSONSerialization.jsonObject(with: data) as? [String: AnyObject] {
-                    for result in json["items"] as! [[String: AnyObject]]{
-                        
+                    for result in json["results"] as! [[String: AnyObject]]{
+                        let title = result["title"] as! String
+                        let firstName = result["first_name"] as! String
+                        let lastName = result["last_name"] as! String
+                        let twitter = result["twitter_id"] as! String
+                        let site = result["website"] as! String
+                        let website = URL(string: site) ?? URL(string: "https://www.whitehouse.gov")!
+                        let name = "\(title) \(firstName) \(lastName)"
+                        let legislator = Legislator(name, twitter: twitter, website: website)
+                        self.legislators.append(legislator)
                     }
                 }
             }
