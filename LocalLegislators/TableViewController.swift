@@ -72,6 +72,7 @@ class TableViewController: UITableViewController {
             let lat = UIAc.textFields![0] as UITextField
             let lon = UIAc.textFields![1] as UITextField
             if let latitude = lat.text, let longitude = lon.text{
+                print("Search for latitude \(latitude) and longitude \(longitude)")
                 self.search(latitude: latitude, longitude: longitude)
             }
         }
