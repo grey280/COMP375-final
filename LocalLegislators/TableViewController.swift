@@ -61,7 +61,25 @@ class TableViewController: UITableViewController {
         return cell
     }
     @IBAction func locationChange(_ sender: Any) {
+        let UIAc = UIAlertController(title: "New Location", message: "Enter the coordinates you'd like to look up.", preferredStyle: .alert)
+        UIAc.addTextField { (UITF) in //UITF is UITextField
+            UITF.placeholder = "Latitude"
+        }
+        UIAc.addTextField { (UITF) in
+            UITF.placeholder = "Longitude"
+        }
+        let saveAction = UIAlertAction(title: "Search", style: .default) { (UIAA) in // UIAA is UIAlertAction
+            let lat = UIAc.textFields![0] as UITextField
+            let lon = UIAc.textFields![1] as UITextField
+            if let latitude = lat.text, let longitude = lon.text{
+                self.search(latitude: latitude, longitude: longitude)
+            }
+        }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        UIAc.addAction(saveAction)
+        UIAc.addAction(cancelAction)
+        self.present(UIAc, animated: true, completion: nil)
     }
     
     func search(latitude: String, longitude: String){
@@ -87,6 +105,9 @@ class TableViewController: UITableViewController {
                         let name = "\(title) \(firstName) \(lastName)"
                         let legislator = Legislator(name, twitter: twitter, website: website)
                         self.legislators.append(legislator)
+                    }
+                    if(self.legislators.count > 0){
+                        self.tableView.reloadData()
                     }
                 }
             }

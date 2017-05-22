@@ -12,7 +12,7 @@
         <!--Legislators-->
         <scene sceneID="Gph-Uq-5tx">
             <objects>
-                <tableViewController id="aja-oG-8HK" sceneMemberID="viewController">
+                <tableViewController id="aja-oG-8HK" customClass="TableViewController" customModule="LocalLegislators" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JOR-k2-7Is">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Legislators" id="fhm-rZ-YGd">
-                        <barButtonItem key="rightBarButtonItem" title="Location" id="Wue-Mz-np0"/>
+                        <barButtonItem key="rightBarButtonItem" title="Location" id="Wue-Mz-np0">
+                            <connections>
+                                <action selector="locationChange:" destination="aja-oG-8HK" id="64s-sh-ggu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOD-BE-m6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
