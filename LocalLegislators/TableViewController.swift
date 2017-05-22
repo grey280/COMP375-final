@@ -104,7 +104,7 @@ class TableViewController: UITableViewController {
                         let twitter = result["twitter_id"] as! String
                         let site = result["website"] as! String
                         let website = URL(string: site) ?? URL(string: "https://www.whitehouse.gov")!
-                        let name = "\(title) \(firstName) \(lastName)"
+                        let name = "\(title). \(firstName) \(lastName)"
                         let legislator = Legislator(name, twitter: twitter, website: website)
                         self.legislators.append(legislator)
                     }
