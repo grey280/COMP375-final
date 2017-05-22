@@ -60,7 +60,8 @@ class TableViewController: UITableViewController {
         
         return cell
     }
-    @IBAction func locationChange(_ sender: Any) {
+    
+    @IBAction func locationChange(_ sender: Any) { // This is how we let people enter a new location
         let UIAc = UIAlertController(title: "New Location", message: "Enter the coordinates you'd like to look up.", preferredStyle: .alert)
         UIAc.addTextField { (UITF) in //UITF is UITextField
             UITF.placeholder = "Latitude"
@@ -83,9 +84,8 @@ class TableViewController: UITableViewController {
         self.present(UIAc, animated: true, completion: nil)
     }
     
-    func search(latitude: String, longitude: String){
+    func search(latitude: String, longitude: String){ // This is how we handle a new location being entered
         legislators = [Legislator]() // clear out old results
-        self.tableView.reloadData()
         guard let encLat = latitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let encLong = longitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return()
         }
@@ -109,58 +109,13 @@ class TableViewController: UITableViewController {
                         self.legislators.append(legislator)
                     }
                     if(self.legislators.count > 0){
-                        self.tableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
+                    
                 }
             }
         }.resume()
     }
-    
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
