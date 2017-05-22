@@ -108,13 +108,10 @@ class TableViewController: UITableViewController {
                         let legislator = Legislator(name, twitter: twitter, website: website)
                         newLegislators.append(legislator)
                     }
-                    if(newLegislators.count > 0){
-                        DispatchQueue.main.async {
-                            self.legislators = newLegislators // this way we can wipe the old results only once we've got the new ones
-                            self.tableView.reloadData()
-                        }
+                    DispatchQueue.main.async {
+                        self.legislators = newLegislators // this way we can wipe the old results only once we've got the new ones
+                        self.tableView.reloadData()
                     }
-                    
                 }
             }
         }.resume()
