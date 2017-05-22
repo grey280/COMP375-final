@@ -12,6 +12,7 @@
 		2D6783D71ED3583E00B8C1A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D6783D61ED3583E00B8C1A6 /* Assets.xcassets */; };
 		2D6783DA1ED3583E00B8C1A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D6783D81ED3583E00B8C1A6 /* LaunchScreen.storyboard */; };
 		2D6783E31ED358C800B8C1A6 /* Legislator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6783E21ED358C800B8C1A6 /* Legislator.swift */; };
+		2D6783E51ED3594B00B8C1A6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6783E41ED3594B00B8C1A6 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2D6783D91ED3583E00B8C1A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D6783DB1ED3583E00B8C1A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D6783E21ED358C800B8C1A6 /* Legislator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legislator.swift; sourceTree = "<group>"; };
+		2D6783E41ED3594B00B8C1A6 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				2D6783E11ED3584700B8C1A6 /* Supporting Files */,
 				2D6783D31ED3583E00B8C1A6 /* Main.storyboard */,
 				2D6783E21ED358C800B8C1A6 /* Legislator.swift */,
+				2D6783E41ED3594B00B8C1A6 /* TableViewController.swift */,
 			);
 			path = LocalLegislators;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D6783D01ED3583E00B8C1A6 /* AppDelegate.swift in Sources */,
+				2D6783E51ED3594B00B8C1A6 /* TableViewController.swift in Sources */,
 				2D6783E31ED358C800B8C1A6 /* Legislator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
