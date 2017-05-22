@@ -60,6 +60,9 @@ class TableViewController: UITableViewController {
         
         return cell
     }
+    @IBAction func locationChange(_ sender: Any) {
+        
+    }
     
     func search(latitude: String, longitude: String){
         legislators = [Legislator]() // clear out old results
@@ -89,6 +92,7 @@ class TableViewController: UITableViewController {
             }
         }.resume()
     }
+    
  
 
     /*
