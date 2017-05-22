@@ -85,6 +85,7 @@ class TableViewController: UITableViewController {
     
     func search(latitude: String, longitude: String){
         legislators = [Legislator]() // clear out old results
+        self.tableView.reloadData()
         guard let encLat = latitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let encLong = longitude.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return()
         }
